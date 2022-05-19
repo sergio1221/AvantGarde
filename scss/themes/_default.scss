@@ -1,0 +1,150 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the common parts in all application
+// -----------------------------------------------------------------------------
+// Custom Color Classes
+.text-primary {
+  color: $primary;
+}
+.text-secondary {
+  color: $secondary;
+}
+
+.bg-primary {
+  background-color: $primary;
+}
+.bg-secondary {
+  background-color: $secondary;
+}
+
+// Custom Container
+.container {
+  margin: 0 auto;
+  padding: 0 24px;
+  @include mq("desktop-small") {
+    padding: 0 100px;
+    max-width: 1158px;
+  }
+}
+
+.d-sm-only {
+  @include mq("tablet") {
+    display: none;
+  }
+}
+
+.hamburger{
+  width: 24px;
+  height: 21px;
+  display: block;
+  position: relative;
+  background: none;
+  border: none;
+  @include mq("desktop-small") {
+    display: none;
+  }
+  &:after, &:before, span {
+    content: ' ';
+    position: absolute;
+    display: block;
+    left:0;
+    width: 100%;
+    height: 3px;
+    background-color: $secondary;
+    -webkit-transition: all 0.3s ease-in-out; 
+    transition: all 0.3s ease-in-out;
+  }
+  &:before{
+    top: 0;
+  }
+  &:after{
+    bottom: 0; 
+  }
+  &:focus{
+    outline: none;
+  }
+  span{
+    top: 9px;
+  }
+  &.active {
+    &:before{
+      @include css3-rotation(-45deg);
+      top: $hamburger-size / 2;
+      margin-top: -10%;
+    }
+    &:after{
+      @include css3-rotation(45deg);
+      top: $hamburger-size / 2;
+      margin-top: -10%;
+    }
+    span{
+      opacity: 0;
+    }
+  }
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 22px;
+  min-width: 200px;
+  background: $white;
+  border: none;
+  color: $primary;
+  text-align: center;
+  font-family: 'Jost', sans-serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+  line-height: 1.4;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    transform: scale(0.95);
+  }
+}
+
+.sound-ctrl {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  text-align: center;
+  font-size: 0;
+  img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: all 0.3s ease-in-out;
+  }
+  &.on .icon-off {
+    opacity: 0;
+  }
+  &.off .icon-on {
+    opacity: 0;
+  }
+}
+
+.scroll-note {
+  display: flex;
+  align-items: center;
+  margin: 160px 0 0;
+  color: $white;
+  .icon-holder {
+    font-size: 0;
+    margin-right: 6px;
+    img {
+      animation-timing-function: ease-in-out;
+      animation-name: popping;
+      animation-duration: 0.8s;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+    }
+  }
+}
+
+@keyframes popping {
+  0%   {transform: translateY(-3px);}
+  100% {transform: translateY(3px);}
+}

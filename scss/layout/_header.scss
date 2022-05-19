@@ -1,0 +1,106 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the header of the site/application.
+// -----------------------------------------------------------------------------
+
+// Logo Style
+.header {
+  position: relative;
+  z-index: 10;
+  .logo-wrap {
+    position: fixed;
+    left: 80px;
+    top: 40px;
+    font-size: 0;
+    opacity: 0;
+    transition: all 0.8s ease-in-out;
+    &.shown {
+      opacity: 1;
+    }
+  }
+  .logo-holder {
+    position: fixed;
+    top: 80px;
+    right: 80px;
+    color: $white;
+    text-align: center;
+    transition: all 0.8s ease-in-out;
+    z-index: 1;
+    a {
+      font-size: 0;
+    }
+    .support-info {
+      margin: 0 0 10px;
+      transition: all 0.8s ease-in-out;
+    }
+    .copyright-info {
+      margin: 35px 0 0;
+      color: $grey;
+      opacity: 0;
+      transition: all 0.8s ease-in-out;
+    }
+    &.active {
+      top: calc(100vh - 165px);
+      right: 60px;
+      .support-info {
+        opacity: 0;
+      }
+      .copyright-info {
+        opacity: 1;
+      }
+    }
+  }
+  &-menu {
+    position: fixed;
+    top: 0;
+    right: -220px;
+    width: 220px;
+    height: 100vh;
+    padding: 40px 20px 40px 40px;
+    background: $primary;
+    transition: all 0.8s ease-in-out;
+    &.active {
+      right: 0;
+    }
+    &-items {
+      margin: 40px 0 0;
+    }
+    &-item {
+      position: relative;
+      max-width: 140px;
+      padding: 20px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      &:first-child {
+        display: none;
+      }
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -39px;
+        width: 0;
+        height: 0;
+        border-left: 1px solid $secondary;
+        transition: all 0.3s ease-in-out;
+      }
+      a {
+        margin: 20px 0;
+        font-family: 'Jost', sans-serif;
+        font-weight: 600;
+        font-size: 1.2rem;
+        line-height: 1.4;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: $white;
+        transition: all 0.3s ease-in-out;
+      }
+      &.active, &:hover {
+        &::before {
+          height: 100%;
+        }
+        a {
+          color: $secondary;
+        }
+      }
+    }
+  }
+}

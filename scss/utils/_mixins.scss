@@ -1,0 +1,116 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass mixins.
+// -----------------------------------------------------------------------------
+
+@mixin mq($width, $type: min) {
+  @if map_has_key($breakpoints, $width) {
+    $width: map_get($breakpoints, $width);
+    @if ($type == min) {
+      $width: $width + 1px;
+    }
+    @media only screen and (#{$type}-width: $width) {
+      @content;
+    }
+  }
+}
+
+@mixin orientation($direction) {
+  $orientation-landscape: "(orientation:landscape)";
+  $orientation-portrait: "(orientation:portrait)";
+
+  @if $direction == landscape {
+    @media #{$orientation-landscape} {
+      @content;
+    }
+  }
+  @if $direction == portrait {
+    @media #{$orientation-portrait} {
+      @content;
+    }
+  }
+}
+
+// Typography mixins
+@mixin heading1() {
+  line-height: 1;
+  letter-spacing: 0;
+  font-size: 8rem;
+  font-family: 'Playfair Display', serif;
+  @include mq("desktop-small", max) {
+  }
+}
+@mixin heading2() {
+  line-height: 1.1;
+  letter-spacing: 0;
+  font-size: 6.4rem;
+  font-family: 'Playfair Display', serif;
+  @include mq("desktop-small", max) {
+  }
+}
+@mixin heading3() {
+  line-height: 1.2;
+  letter-spacing: 0;
+  font-size: 4.8rem;
+  font-family: 'Playfair Display', serif;
+  @include mq("desktop-small", max) {
+  }
+}
+@mixin heading4() {
+  line-height: 1.3;
+  letter-spacing: 0;
+  font-size: 4rem;
+  font-family: 'Playfair Display', serif;
+  @include mq("desktop-small", max) {
+  }
+}
+@mixin heading5() {
+  line-height: 1.4;
+  letter-spacing: 0;
+  font-size: 3.2rem;
+  font-family: 'Playfair Display', serif;
+  @include mq("desktop-small", max) {
+  }
+}
+@mixin heading6() {
+  line-height: 1.5;
+  letter-spacing: 0;
+  font-size: 2.4rem;
+  font-family: 'Playfair Display', serif;
+  @include mq("desktop-small", max) {
+  }
+}
+
+@mixin pseudo-elements() {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@mixin coverImage() {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@mixin backgroundElement {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@mixin css3-rotation($n){
+  -ms-transform:rotate($n);
+  -webkit-transform:rotate($n);
+  transform: rotate($n);
+}
+
+@function calc-line-height($n) {
+  @return $n / 5;
+}
+
+@function vw($px-vw, $base-vw: 1600px) {
+  @return ($px-vw * 100vw) / $base-vw;
+}

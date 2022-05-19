@@ -1,0 +1,11 @@
+// -----------------------------------------------------------------------------
+// This file contains all @font-face declarations, if any.
+// -----------------------------------------------------------------------------
+
+// Tuesday Night
+@font-face {
+  font-family: "Tuesday";
+  src: url("../fonts/TuesdayNight-Regular.otf") format("opentype");
+  font-size: normal;
+  font-display: swap;
+}
